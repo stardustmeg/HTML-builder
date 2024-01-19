@@ -21,6 +21,6 @@ const folderPath = path.join(__dirname, 'secret-folder');
       }
     }
   } catch (err) {
-    console.error(`Something went wrong! ${err}`);
+    console.error(`Something went wrong! ${err.message}`);
   }
 })();
