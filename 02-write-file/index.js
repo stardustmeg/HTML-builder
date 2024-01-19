@@ -9,12 +9,11 @@ const rl = readline.createInterface({
 });
 
 const srcPath = path.join(__dirname, 'text.txt');
-
 const output = fs.createWriteStream(srcPath);
 
 const bye = () => {
   output.end();
-  console.log(`${os.EOL}bye bye!`);
+  console.log(`${os.EOL}Bye bye!`);
   process.exit(0);
 };
 
@@ -34,12 +33,6 @@ const ask = () => {
   });
 };
 
-rl.on('close', () => {
-  bye();
-});
-
-process.on('SIGINT', () => {
-  bye();
-});
+rl.on('close', bye);
 
 ask();
