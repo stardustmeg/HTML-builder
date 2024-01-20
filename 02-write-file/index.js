@@ -17,22 +17,18 @@ const bye = () => {
   process.exit(0);
 };
 
-const ask = () => {
+(function ask() {
   rl.question('Tell me what you want to say >> ', (answer) => {
     if (answer.toLowerCase() === 'exit') {
       bye();
-    } else {
-      output.write(`${answer}${os.EOL}`, (err) => {
-        if (err) {
-          console.error(`Something went wrong! ${err}`);
-        } else {
-          ask();
-        }
-      });
     }
+    output.write(`${answer}${os.EOL}`, (err) => {
+      if (err) {
+        console.error(`Something went wrong! ${err}`);
+      }
+      ask();
+    });
   });
-};
+})();
 
 rl.on('close', bye);
-
-ask();
