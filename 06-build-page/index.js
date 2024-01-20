@@ -39,8 +39,6 @@ const os = require('node:os');
     await fsPromises.rm(assetsCopyDirPath, { recursive: true, force: true });
     await fsPromises.mkdir(assetsCopyDirPath, { recursive: true });
     await copyDirectory(assetsDirPath, assetsCopyDirPath);
-
-    console.log('Done!');
   } catch (err) {
     console.error(`Something went wrong! ${err.message}`);
   }
@@ -86,6 +84,6 @@ async function copyDirectory(src, destination) {
       }),
     );
   } catch (err) {
-    console.error(`Something went wrong with merging styles! ${err.message}`);
+    console.error(`Something went wrong with copying files! ${err.message}`);
   }
 }
